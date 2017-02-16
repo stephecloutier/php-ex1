@@ -15,18 +15,16 @@
             <label for="nbRow">Quels chiffres voulez-vous&nbsp?</label>
 
             <input type="text" name="nbRow" id="nbRow">
-            <?php if( (!ctype_digit($nbRow)) && (isset($_POST['nbRow'])) ){
-                echo $errors['nbRow_notNum'];
-            }elseif ( ($nbRow < 1) && (isset($_POST['nbCol'])) ) {
-                echo $errors['nbRow_notPos'];
-            }; ?>
+            <div class="">
+                <p>Veuillez préciser un nombre de rangés avec une valeur numérique</p>
+                <p>Veuillez préciser un nombre entier de rangés de valeur positive supérieure à 0</p>
+            </div>
 
             <input type="text" name="nbCol" id="nbCol">
-            <?php if( (!ctype_digit($nbCol)) && (isset($_POST['nbCol'])) ){
-                echo $errors['nbCol_notNum'];
-            }elseif ( ($nbCol < 1) && (isset($_POST['nbCol'])) ) {
-                echo $errors['nbCol_notPos'];
-            }; ?>
+            <div class="">
+                <p>Veuillez préciser un nombre de colonnes avec une valeur numérique</p>
+                <p>Veuillez préciser un nombre entier de colonnes de valeur positive supérieure à 0</p>
+            </div>
 
             <input type="submit" value="Calculer">
 

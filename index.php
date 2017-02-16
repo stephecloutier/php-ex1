@@ -1,29 +1,11 @@
 <?php
 
-    // echo get_include_path();
-    // -- Attention, chemins à écrire au complet !
-    // set_include_path();
-    // pour utilise include();
-    // require();  => stop la suite du script si erreur, pas comme include
+// -- Constantes avec les chemins vers les répertoires vers les fichiers dont j'aurai besoin
 
-    set_include_path('/Applications/MAMP/htdocs/Sites/php-ex1');
+define('CONFIGS_DIR', __DIR__.'/configs');
+define('CONTROLLERS_DIR', __DIR__.'/controllers');
+define('VIEWS_DIR', __DIR__.'/views');
 
-    include('configs/settings.php');
+set_include_path(get_include_path().PATH_SEPARATOR.CONFIGS_DIR.PATH_SEPARATOR.CONTROLLERS_DIR.PATH_SEPARATOR.VIEWS_DIR);
 
-    if (isset($_POST['nbRow'])){
-        if(is_numeric($_POST['nbRow'])){
-            if($_POST['nbRow'] !== ''){
-                $nbRow = $_POST['nbRow'];
-            }
-        }
-    };
-
-    if (isset($_POST['nbCol'])){
-        if(is_numeric($_POST['nbCol'])){
-            if($_POST['nbCol'] !== ''){
-                $nbCol = $_POST['nbCol'];
-            }
-        }
-    };
-
-    include('views/layout.php');
+include('tableController.php');
