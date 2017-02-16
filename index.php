@@ -51,14 +51,17 @@
 
     <form action="index.php" method="post">
         <label for="chiffre1">Quels chiffres voulez-vous&nbsp?</label>
+
         <input type="text" name="chiffre1" id="chiffre1">
-        <?php if(!ctype_digit($chiffre1)): ?>
+        <?php if((!ctype_digit($chiffre1)) && (isset($_POST['chiffre1']))): ?>
             <p class="notNumeric">Veuillez préciser un nombre entier positif</p>
         <?php endif; ?>
+
         <input type="text" name="chiffre2" id="chiffre2">
-        <?php if(!ctype_digit($chiffre2)): ?>
+        <?php if((!ctype_digit($chiffre2)) && (isset($_POST['chiffre2']))): ?>
             <p class="notNumeric">Veuillez préciser un nombre entier positif</p>
         <?php endif; ?>
+
         <input type="submit" value="Calculer">
 
     </form>
