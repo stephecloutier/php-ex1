@@ -1,0 +1,63 @@
+html {
+    background: transparent url( "../images/card-bcg.png" );
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    font-family: helvetica, arial, sans serif;
+}
+
+h1 {
+    
+    font-weight: 400;
+}
+
+legend {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100px;
+    margin-bottom: 3em;
+}
+
+form label {
+    display: block;
+    text-align: center;
+    margin-bottom: 0.2em;
+}
+
+
+input[type="submit"]{
+    display: block;
+}
+
+td, th {
+    min-height: 2em;
+    min-width: 2em;
+}
+
+table {
+    border-collapse: collapse;
+    text-align: center;
+    min-width: 500px;
+    max-height: 500px;
+    background-color: white;
+}
+
+p.notNumeric {
+    color: red;
+    font-weight: 600;
+    font-size: 0.7em;
+    margin-top: 0.2em;
+}
