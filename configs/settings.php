@@ -8,4 +8,6 @@ $errors = array(
     'nbCol' => ''
 );
 
+$view = '_form.php';
+
 define('SITE_TITLE', 'Les tables de multiplication');
