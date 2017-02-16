@@ -1,38 +1,48 @@
 <?php
 
-    //$prenom = 'Inconnu';
-    //if (isset($_POST['prenom'])){
-    //    if($_POST['prenom'] !== ''){
-    //        $prenom = $_POST['prenom'];
-    //    }
-    //};
+    // echo get_include_path();
+    // -- Attention, chemins à écrire au complet !
+    // set_include_path();
+    // pour utilise include();
+    // require();  => stop la suite du script si erreur, pas comme include
 
 
-    // LA MÊME CHOSE
-    //$prenom = isset($_POST['prenom']?$_POST['prenom']:'Titi';
-    //$prenom = $_POST['prenom'] ?? 'Titi';  (null coalescing operator)
-
-    //$mainTitle = 'Salut ' . $prenom ;
-
-
-    $chiffre1 = 0;
-    if (isset($_POST['chiffre1'])){
-        if(is_numeric($_POST['chiffre1'])){
-            if($_POST['chiffre1'] !== ''){
-                $chiffre1 = $_POST['chiffre1'];
+    $nbRow = 0;
+    if (isset($_POST['nbRow'])){
+        if(is_numeric($_POST['nbRow'])){
+            if($_POST['nbRow'] !== ''){
+                $nbRow = $_POST['nbRow'];
             }
         }
     };
 
-    $chiffre2 = 0;
-    if (isset($_POST['chiffre2'])){
-        if(is_numeric($_POST['chiffre2'])){
-            if($_POST['chiffre2'] !== ''){
-                $chiffre2 = $_POST['chiffre2'];
+    $nbCol = 0;
+    if (isset($_POST['nbCol'])){
+        if(is_numeric($_POST['nbCol'])){
+            if($_POST['nbCol'] !== ''){
+                $nbCol = $_POST['nbCol'];
             }
         }
     };
 
+    $errors = array(
+        'nbRow_notNum' => '<p>Veuillez préciser un nombre de rangés avec une valeur numérique</p>',
+        'nbRow_notPos' => '<p>Veuillez préciser un nombre entier de rangés de valeur positive supérieure à 0</p>',
+        'nbCol_notNum' => '<p>Veuillez préciser un nombre de colonnes avec une valeur numérique</p>',
+        'nbCol_notPos' => '<p>Veuillez préciser un nombre entier de colonnes de valeur positive supérieure à 0</p>'
+    );
+
+    // if( (!ctype_digit($nbRow)) && (isset($_POST['nbRow'])) ){
+    //     echo $errors['nbRow_notNum'];
+    // }elseif ( ($nbRow < 1) && (isset($_POST['nbCol'])) ) {
+    //     echo $errors['nbRow_notPos'];
+    // };
+    //
+    // if( (!ctype_digit($nbCol)) && (isset($_POST['nbCol'])) ){
+    //     echo $errors['nbCol_notNum'];
+    // }elseif ( ($nbCol < 1) && (isset($_POST['nbCol'])) ) {
+    //     echo $errors['nbCol_notPos'];
+    // };
 
 ?>
 
@@ -50,40 +60,44 @@
     <h1>Mes tables de multiplication</h1>
 
     <form action="index.php" method="post">
-        <label for="chiffre1">Quels chiffres voulez-vous&nbsp?</label>
+        <label for="nbRow">Quels chiffres voulez-vous&nbsp?</label>
 
-        <input type="text" name="chiffre1" id="chiffre1">
-        <?php if((!ctype_digit($chiffre1)) && (isset($_POST['chiffre1']))): ?>
-            <p class="notNumeric">Veuillez préciser un nombre entier positif</p>
-        <?php endif; ?>
+        <input type="text" name="nbRow" id="nbRow">
+        <?php if( (!ctype_digit($nbRow)) && (isset($_POST['nbRow'])) ){
+            echo $errors['nbRow_notNum'];
+        }elseif ( ($nbRow < 1) && (isset($_POST['nbCol'])) ) {
+            echo $errors['nbRow_notPos'];
+        }; ?>
 
-        <input type="text" name="chiffre2" id="chiffre2">
-        <?php if((!ctype_digit($chiffre2)) && (isset($_POST['chiffre2']))): ?>
-            <p class="notNumeric">Veuillez préciser un nombre entier positif</p>
-        <?php endif; ?>
+        <input type="text" name="nbCol" id="nbCol">
+        <?php if( (!ctype_digit($nbCol)) && (isset($_POST['nbCol'])) ){
+            echo $errors['nbCol_notNum'];
+        }elseif ( ($nbCol < 1) && (isset($_POST['nbCol'])) ) {
+            echo $errors['nbCol_notPos'];
+        }; ?>
 
         <input type="submit" value="Calculer">
 
     </form>
 
-    <?php if($chiffre1&&$chiffre2): ?>
+    <?php if($nbRow&&$nbCol): ?>
 
     <table border="1">
-        <legend>Les <?= $chiffre2; ?> premières valeurs des  <?= $chiffre1; ?> premières tables de multiplication</legend>
+        <legend>Les <?= $nbCol; ?> premières valeurs des  <?= $nbRow; ?> premières tables de multiplication</legend>
         <tr>
             <th></th>
-            <?php for($i = 1; $i <= $chiffre1; $i++): ?>
+            <?php for($i = 1; $i <= $nbRow; $i++): ?>
             <th>
                 <?= $i;?>
             </th>
             <?php endfor; ?>
         </tr>
-        <?php for($i = 1; $i <= $chiffre2; $i++): ?>
+        <?php for($i = 1; $i <= $nbCol; $i++): ?>
         <tr>
             <th>
                 <?= $i;?>
             </th>
-            <?php for($j = 1; $j <= $chiffre1; $j++): ?>
+            <?php for($j = 1; $j <= $nbRow; $j++): ?>
                 <td>
                     <?= $i*$j; ?>
                 </td>

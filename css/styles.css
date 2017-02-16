@@ -57,7 +57,7 @@ table {
     background-color: white;
 }
 
-p.notNumeric {
+p {
     color: red;
     font-weight: 600;
     font-size: 0.7em;
