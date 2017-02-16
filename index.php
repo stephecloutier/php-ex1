@@ -1,5 +1,11 @@
 <?php
 
+// echo get_include_path();
+// -- Attention, chemins à écrire au complet !
+// set_include_path();
+// pour utilise include();
+// require();  => stop la suite du script si erreur, pas comme include
+
 // -- Constantes avec les chemins vers les répertoires vers les fichiers dont j'aurai besoin
 
 define('CONFIGS_DIR', __DIR__.'/configs');

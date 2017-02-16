@@ -1,11 +1,5 @@
 <?php
 
-    // echo get_include_path();
-    // -- Attention, chemins à écrire au complet !
-    // set_include_path();
-    // pour utilise include();
-    // require();  => stop la suite du script si erreur, pas comme include
-
     include('./configs/settings.php');
 
     if (isset($_POST['nbRow'])){
