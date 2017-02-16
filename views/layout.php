@@ -12,19 +12,13 @@
         <h1>Mes tables de multiplication</h1>
 
         <form action="index.php" method="post">
-            <label for="nbRow">Quels chiffres voulez-vous&nbsp?</label>
+            <label for="nbRow">Quels chiffres voulez-vous&nbsp? (Rangés/Colonnes)</label>
 
             <input type="text" name="nbRow" id="nbRow">
-            <div class="">
-                <p>Veuillez préciser un nombre de rangés avec une valeur numérique</p>
-                <p>Veuillez préciser un nombre entier de rangés de valeur positive supérieure à 0</p>
-            </div>
+            <p><?= $errors['nbRow'] ?></p>
 
             <input type="text" name="nbCol" id="nbCol">
-            <div class="">
-                <p>Veuillez préciser un nombre de colonnes avec une valeur numérique</p>
-                <p>Veuillez préciser un nombre entier de colonnes de valeur positive supérieure à 0</p>
-            </div>
+            <p><?= $errors['nbCol'] ?></p>
 
             <input type="submit" value="Calculer">
 
